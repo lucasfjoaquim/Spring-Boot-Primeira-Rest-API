@@ -2,8 +2,9 @@ package med.voll.api.controler;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.voll.api.medico.*;
-import med.voll.api.paciente.*;
+import med.voll.api.domain.paciente.*;
+import med.voll.api.domain.medico.*;
+import med.voll.api.domain.paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +39,6 @@ public class PacienteControler {
     @DeleteMapping("/{id}")
     @Transactional
     public void excluir(@PathVariable Long id) {
-        System.out.println(id);
         var paciente = repository.getReferenceById(id);
         paciente.excluir();
     }
